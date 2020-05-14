@@ -1,0 +1,15 @@
+set routing-instances {{ customer_vrf }} instance-type virtual-router
+
+set interfaces {{ inter_a }} unit 0 family inet address {{ local_a }}/24
+set interfaces {{ inter_b }} unit 0 family inet address {{ local_b }}/24
+
+set routing-instances {{ customer_vrf }} interface {{ inter_a }}
+set routing-instances {{ customer_vrf }} interface {{ inter_b }}
+
+set routing-instances {{ customer_vrf }} routing-options autonomous-system 64533
+set routing-instances {{ customer_vrf }} protocols bgp group ebgp type external
+set routing-instances {{ customer_vrf }} protocols bgp group ebgp neighbor {{ remote_a }} local-address {{ local_a }}
+set routing-instances {{ customer_vrf }} protocols bgp group ebgp neighbor {{ remote_a }} peer-as {{ as_a }}
+set routing-instances {{ customer_vrf }} protocols bgp group ebgp neighbor {{ remote_b }} multihop ttl 2
+set routing-instances {{ customer_vrf }} protocols bgp group ebgp neighbor {{ remote_b }} local-address {{ local_b }}
+set routing-instances {{ customer_vrf }} protocols bgp group ebgp neighbor {{ remote_b }} peer-as {{ as_b }}

@@ -1,0 +1,10 @@
+---
+customer_vrf : 'vrf-test'
+inter_a : ge-0/0/0
+inter_b : ge-0/0/3
+local_a : 10.100.24.2
+local_b : 10.100.46.1
+remote_a : 10.100.24.1
+remote_b : 10.100.46.2
+as_a : 64522
+as_b : 64544
